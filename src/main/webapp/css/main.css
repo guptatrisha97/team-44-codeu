@@ -17,6 +17,12 @@
 /* Prevent the page from becoming too wide. */
 body {
   max-width: 600px;
+  
+  /*ADDED SOME STYLES. YOU CAN CHANGE IF NEEDED*/
+
+  background-color: black;
+  color: white;
+  font-family:'Bowlby One SC', cursive;
 }
 
 /* Remove bullet points from navigation bar. */
@@ -30,3 +36,41 @@ nav li {
   display: inline-block;
   margin-right: 10px
 }
+
+/*DARSHNA'S CODE STARTS HERE*/
+
+#carousel1{
+	position:absolute;
+	border-top: 12px double rgba(38,255,239,0.5);
+	border-right: 12px double rgba(38,255,239,0.5);
+	border-bottom: 12px double rgba(38,255,239,0.5);
+	width:274px;
+	height:274px;
+	margin-top:2px;
+	margin-left: 590px;
+	padding:20px;
+
+}
+#darshna{
+	border-top: 12px double rgba(38,255,239,0.5);
+	border-left: 12px double rgba(38,255,239,0.5);
+	border-bottom: 12px double rgba(38,255,239,0.5);
+	padding: 10px 10px;
+	margin: 10px;
+}
+
+/*DARSHNA'S CODE ENDS HERE*/
+
+
+#teammateB{
+	border: gold 10px double;
+	padding: 10px 10px;
+	margin: 10px;
+}
+#teammateC{
+	border: gold 10px double;
+	padding: 10px 10px;
+	margin: 10px;
+}
+
+
