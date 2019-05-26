@@ -23,7 +23,6 @@ body {
   background-color: black;
   color: white;
   font-family:'Bowlby One SC', cursive;
-
 }
 
 /* Remove bullet points from navigation bar. */
@@ -40,26 +39,15 @@ nav li {
 
 /*DARSHNA'S CODE STARTS HERE*/
 
-#carousel1{
-	position:absolute;
-	border-top: 12px double rgba(38,255,239,0.5);
-	border-right: 12px double rgba(38,255,239,0.5);
-	border-bottom: 12px double rgba(38,255,239,0.5);
-	width:274px;
-	height:274px;
-	margin-top:2px;
-	margin-left: 590px;
-	padding:20px;
-
-}
 #darshna{
-	border-top: 12px double rgba(38,255,239,0.5);
-	border-left: 12px double rgba(38,255,239,0.5);
-	border-bottom: 12px double rgba(38,255,239,0.5);
+	border:12px double rgba(38,255,239,0.5);
 	padding: 10px 10px;
 	margin: 10px;
 }
-#pic1{
+#pic2{
+	position: absolute;
+	margin-top:-210px;
+	margin-left: 600px;
 	width:200px;
 	height: 230px;
 }
@@ -73,7 +61,7 @@ nav li {
 	margin: 10px;
 }
 #teammateC{
-	border: gold 10px double;
+	border: pink 10px double;
 	padding: 10px 10px;
 	margin: 10px;
 }
