@@ -39,17 +39,10 @@ nav li {
 
 /*DARSHNA'S CODE STARTS HERE*/
 
-#darshna{
+#border{
 	border:12px double rgba(38,255,239,0.5);
 	padding: 10px 10px;
 	margin: 10px;
-}
-#pic2{
-	position: absolute;
-	margin-top:-210px;
-	margin-left: 600px;
-	width:200px;
-	height: 230px;
 }
 
 /*DARSHNA'S CODE ENDS HERE*/
