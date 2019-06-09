@@ -30,6 +30,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern; 
+import javax.imageio.ImageIO;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.net.MalformedURLException; 
+import java.net.URL; 
+
 /** Handles fetching and saving {@link Message} instances. */
 @WebServlet("/messages")
 public class MessageServlet extends HttpServlet {
@@ -79,19 +87,50 @@ public class MessageServlet extends HttpServlet {
     String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
 
     String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
-
-    //Message message = new Message(user, text);
-    //datastore.storeMessage(message);
     
-    String regex = "(https?://\\S+\\.(png|jpg))";
+    String regex = "((https|http)?://\\S+\\.(png|jpg|gif|tif|jpeg))$";
     String replacement = "<img src=\"$1\" />";
-    String textWithImagesReplaced = userText.replaceAll(regex, replacement);
-    
-    Message message = new Message(user, textWithImagesReplaced);
+    // String text = "Here is an image https://media.boingboing.net/wp-content/uploads/2019/02/cats.jpg";
+    //Pattern to check if this is a valid URL address
+    Pattern p = Pattern.compile("((https|http|ftp)?://\\S+\\.(png|jpg|gif|tif|jpeg))");
+    Matcher m;
+    m=p.matcher(userText);
+    boolean matches=false;
+    String result="";
+    if (m.find())
+     {
+        String newtext=m.group(1);
+        //System.out.println(newtext);
+        Matcher m1;
+        m1=p.matcher(newtext);
+        matches = isImage(newtext);
+        //System.out.println(matches);
+     }
+    if(matches){
+      result = userText.replaceAll(regex, replacement);
+    }
+    else{
+      result = userText;
+    }
+    result = userText.replaceAll(regex, replacement);
+    Message message = new Message(user, result);
     datastore.storeMessage(message);
-
-
-
     response.sendRedirect("/user-page.html?user=" + user);
   }
+
+  public boolean isImage(String image_path){
+            //String url1 = "https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xft1/t39.1997-6/p200x200/851575_126362190881911_254357215_n.png";
+            Image image=null;
+            try{
+                image = ImageIO.read(new URL(image_path));
+            }
+            catch (IOException e){
+                //System.out.println("Error");
+            }
+            if(image != null){
+                return true;
+            }else{
+               return false; 
+        }
+    }
 }
