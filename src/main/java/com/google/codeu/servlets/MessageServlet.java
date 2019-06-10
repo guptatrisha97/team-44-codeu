@@ -37,7 +37,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException; 
 import java.net.URL; 
-
+import java.util.List;
+import java.util.ArrayList;
 /** Handles fetching and saving {@link Message} instances. */
 @WebServlet("/messages")
 public class MessageServlet extends HttpServlet {
@@ -83,35 +84,34 @@ public class MessageServlet extends HttpServlet {
       return;
     }
 
-    String user = userService.getCurrentUser().getEmail();
-    String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
+        String user = userService.getCurrentUser().getEmail();
+        String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
 
-    String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
+        String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
     
-    String regex = "((https|http)?://\\S+\\.(png|jpg|gif|tif|jpeg))$";
-    String replacement = "<img src=\"$1\" />";
-    // String text = "Here is an image https://media.boingboing.net/wp-content/uploads/2019/02/cats.jpg";
-    //Pattern to check if this is a valid URL address
-    Pattern p = Pattern.compile("((https|http|ftp)?://\\S+\\.(png|jpg|gif|tif|jpeg))");
-    Matcher m;
-    m=p.matcher(userText);
-    boolean matches=false;
-    String result="";
-    if (m.find())
-     {
-        String newtext=m.group(1);
-        //System.out.println(newtext);
-        Matcher m1;
-        m1=p.matcher(newtext);
-        matches = isImage(newtext);
-        //System.out.println(matches);
-     }
-    if(matches){
-      result = userText.replaceAll(regex, replacement);
-    }
-    else{
-      result = userText;
-    }
+        String regex = "((https|http|ftp)?://\\S+\\.(png|jpg|gif|jpeg|tif))";
+        String replacement = "<img src=\"$1\" />";
+        List<String> extractedUrls = extractUrls(userText);
+        boolean flag=false;
+        String result;
+        for (String url : extractedUrls)
+        {
+            //System.out.println(url);
+            flag= isImage(url);
+            //System.out.println(flag);
+            if(flag==false)
+              break;
+            
+        }
+
+        if(flag==true)
+          {
+            result = text.replaceAll(regex, replacement);
+          }
+        else {
+          //code for invalid url goes here. 
+        }
+      
     result = userText.replaceAll(regex, replacement);
     Message message = new Message(user, result);
     datastore.storeMessage(message);
@@ -133,4 +133,19 @@ public class MessageServlet extends HttpServlet {
                return false; 
         }
     }
+     public List<String> extractUrls(String text)
+        {
+            List<String> containedUrls = new ArrayList<String>();
+            String urlRegex = "((https?|ftp|gopher|telnet|file):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
+            Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
+            Matcher urlMatcher = pattern.matcher(text);
+        
+            while (urlMatcher.find())
+            {
+                containedUrls.add(text.substring(urlMatcher.start(0),
+                        urlMatcher.end(0)));
+            }
+        
+            return containedUrls;
+        }
 }
