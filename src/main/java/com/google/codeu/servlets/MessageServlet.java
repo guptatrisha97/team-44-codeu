@@ -89,30 +89,25 @@ public class MessageServlet extends HttpServlet {
 
         String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
     
-        String regex = "((https|http|ftp)?://\\S+\\.(png|jpg|gif|jpeg|tif))";
-        String replacement = "<img src=\"$1\" />";
+        String regeximg = "((https|http|ftp)?://\\S+\\.(png|jpg|gif|jpeg|tif))";
+        String replacementimg = "<img src=\"$1\" />";
+        //String regexvid= "(?:https?:\\/\\/)?(?:www\\.)?youtu\\.?be(?:\\.com)?\\/?.*(?:watch|emed)?(?:.*v=|v\\/|\\/)([\\w\\-_]+)\\&?)";
+       // String replacementvid= "<iframe src= \"$1\"/>";
+        //String text ="Here is a video http://www.youtube.com/v/i_GFalTRHDA  here is my dog https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500";
+                //Pattern to check if this is a valid URL address
         List<String> extractedUrls = extractUrls(userText);
         boolean flag=false;
-        String result;
+        String result=userText;
         for (String url : extractedUrls)
         {
             //System.out.println(url);
             flag= isImage(url);
             //System.out.println(flag);
-            if(flag==false)
-              break;
-            
-        }
-
-        if(flag==true)
-          {
-            result = text.replaceAll(regex, replacement);
+            if(flag==true){
+            result = userText.replaceAll(regeximg, replacementimg);
           }
-        else {
-          //code for invalid url goes here. 
+            //System.out.println(result);
         }
-      
-    result = userText.replaceAll(regex, replacement);
     Message message = new Message(user, result);
     datastore.storeMessage(message);
     response.sendRedirect("/user-page.html?user=" + user);
