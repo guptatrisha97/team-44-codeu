@@ -30,6 +30,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern; 
+import javax.imageio.ImageIO;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.net.MalformedURLException; 
+import java.net.URL; 
+import java.util.List;
+import java.util.ArrayList;
 /** Handles fetching and saving {@link Message} instances. */
 @WebServlet("/messages")
 public class MessageServlet extends HttpServlet {
@@ -75,23 +84,54 @@ public class MessageServlet extends HttpServlet {
       return;
     }
 
-    String user = userService.getCurrentUser().getEmail();
-    String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
+        String user = userService.getCurrentUser().getEmail();
+        String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
 
-    String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
-
-    //Message message = new Message(user, text);
-    //datastore.storeMessage(message);
+        String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
     
-    String regex = "(https?://\\S+\\.(png|jpg))";
-    String replacement = "<img src=\"$1\" />";
-    String textWithImagesReplaced = userText.replaceAll(regex, replacement);
-    
-    Message message = new Message(user, textWithImagesReplaced);
+        String regeximg = "((https|http|ftp)?://\\S+\\.(png|jpg|gif|jpeg|tif))";
+        String replacementimg = "<img src=\"$1\" />";
+        List<String> extractedUrls = extractUrls(userText);
+        boolean flag=false;
+        String result=userText;
+        for (String url : extractedUrls)
+        {
+            flag= isImage(url);
+            if(flag==true){
+            result = userText.replaceAll(regeximg, replacementimg);
+          }
+        }
+    Message message = new Message(user, result);
     datastore.storeMessage(message);
-
-
-
     response.sendRedirect("/user-page.html?user=" + user);
   }
+
+  public boolean isImage(String image_path){
+            Image image=null;
+            try{
+                image = ImageIO.read(new URL(image_path));
+            }
+            catch (IOException e){
+            }
+            if(image != null){
+                return true;
+            }else{
+               return false; 
+        }
+    }
+     public List<String> extractUrls(String text)
+        {
+            List<String> containedUrls = new ArrayList<String>();
+            String urlRegex = "((https?|ftp|gopher|telnet|file):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
+            Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
+            Matcher urlMatcher = pattern.matcher(text);
+        
+            while (urlMatcher.find())
+            {
+                containedUrls.add(text.substring(urlMatcher.start(0),
+                        urlMatcher.end(0)));
+            }
+        
+            return containedUrls;
+        }
 }
