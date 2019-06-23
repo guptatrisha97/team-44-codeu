@@ -32,16 +32,13 @@ limitations under the License.
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
+    <exec.mainClass>io.happycoding.vision.VisionHelloWorld</exec.mainClass>
+    <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
-
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <scope>provided</scope>
-    </dependency>
 
     <dependency>
       <groupId>com.google.appengine</groupId>
@@ -61,6 +58,25 @@ limitations under the License.
       <version>1.52.0</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-vision</artifactId>
+      <version> 1.79.0</version>
+    </dependency>
+
+<dependency>
+    <groupId>com.google.api</groupId>
+    <artifactId>gax</artifactId>
+    <version>1.46.1</version>
+</dependency>
+
+<dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -73,3 +89,5 @@ limitations under the License.
     </plugins>
   </build>
 </project>
+
+
