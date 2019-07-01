@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>interns' countries</title>
+        <title>A New Chart</title>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', {packages: ['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var book_data = new google.visualization.DataTable();
-                //define columns for the DataTable instance
-                book_data.addColumn('string', 'Country');
-                book_data.addColumn('number', 'people');
-                //add data to book_data
-                book_data.addRows([
-                                   ["USA", 16],
-                                   ["Singapore", 10],
-                                   ["France", 17],
-                                   ["Japan", 14],
-                                   ["Germany", 8]
-                                   ]);
-                                   var chart = new google.visualization.BarChart(document.getElementById('country_chart'));
-                                   chart.draw(book_data);
-            }
-        </script>
-    </head>
-    <body>
-        <h1>Chart Project</h1>
-        <div id="country_chart"></div>
-    </body>
+   <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart(){
+            fetch("/bookchart")
+                .then((response) => {
+                  return response.json();
+                })
+                .then((bookJson) => {
+                  var bookData = new google.visualization.DataTable();
+                  //define columns for the DataTable instance
+                  bookData.addColumn('string', 'Book Title');
+                  bookData.addColumn('number', 'Rating');
+                  for (i = 0; i < bookJson.length; i++) {
+                    bookRow = [];
+                    var title = bookJson[i].title;
+                    var ratings = bookJson[i].rating;
+                    bookRow.push(title, ratings);
+                    bookData.addRow(bookRow);
+                 }
+                 var chartOptions = {
+                    width: 800,
+                    height: 400
+                     };
+                     var bookChart = new google.visualization.BarChart(document.getElementById('book_chart'));
+                                    bookChart.draw(bookData, chartOptions);
+                                })
+                             }
+                         </script>
+                       </head>
+                       <body>
+                         <h1>Chart Project</h1><div id="book_chart"></div>
+  </body>
 </html>
