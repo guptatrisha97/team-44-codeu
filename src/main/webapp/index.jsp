@@ -22,11 +22,13 @@
             width: 60%;
             border: 3px solid #73AD21;
             padding: 10px;
+            margin-top: 200px;
         }
 
         body{
-          background-image: url(https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+          background-image: url(https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300280/54088843-healthy-food-background-studio-photo-of-different-fruits-on-white-wooden-table-high-resolution-produ.jpg);
         }
+
 
   </style>
   <body>
@@ -39,7 +41,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="collapse navbar-collapse topnav-right d-flex" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/index.html">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/recipe.html">Recipe</a>

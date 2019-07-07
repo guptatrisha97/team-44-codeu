@@ -62,16 +62,41 @@ public class ImageAnalysisServlet extends HttpServlet {
     // Output some HTML that shows the data the user entered.
     // A real codebase would probably store these in Datastore.
     response.setContentType("text/html");
-    out.println("<p>Here's the image you uploaded:</p>");
+    out.println("<html><head><link rel='stylesheet' type='text/css' href='/images.css'></head>");
+
+    out.println("<title>Image Upload Analysis</title>");
+    out.println(" <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>");
+    out.println("<link href='img/apple-touch-icon.png' rel='apple-touch-icon'>");
+
+    out.println("<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>");
+ 
+    out.println("<a class='navbar-brand' href='index.html'>");
+    out.println("<h3><span>Recipe</span>club</h3>");
+    out.println("</a>");
+    out.println("<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>");
+    out.println("<span class='navbar-toggler-icon'></span>");
+    out.println("</button>");
+    out.println("<div class='collapse navbar-collapse topnav-right d-flex' id='navbarNavAltMarkup'>");
+    out.println("<div class='navbar-nav'>");
+    out.println("<a class='nav-item nav-link active' href='/index.html'>Home <span class='sr-only'>(current)</span></a>");
+    out.println("<a class='nav-item nav-link' href='/recipe.html'>Recipe</a>");
+    out.println("<a class='nav-item nav-link' href='/aboutus.html'>About us</a>");
+    out.println("<a class='nav-item nav-link' href='/maps.html'>Maps</a>");
+    out.println("</div>");
+    out.println("</div>");
+    out.println("</nav>");
+
+    out.println("<h1>Here's the image you uploaded:</h1>");
     out.println("<a href=\"" + imageUrl + "\">");
     out.println("<img src=\"" + imageUrl + "\" />");
     out.println("</a>");
-    out.println("<p>Here are the labels we extracted:</p>");
+    out.println("<div class='center'>");
+    out.println("<p>This is what the image contains:</p>");
     out.println("<ul>");
     for(EntityAnnotation label : imageLabels){
       out.println("<li>" + label.getDescription() + " " + label.getScore());
     }
-    out.println("</ul>");
+    out.println("</ul></div></html>");
   }
 
   /**
