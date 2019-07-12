@@ -32,7 +32,6 @@ public class UserListServlet extends HttpServlet {
 
     private Datastore datastore;
 
-
     @Override
 
     public void init() {
@@ -40,7 +39,6 @@ public class UserListServlet extends HttpServlet {
         datastore = new Datastore();
 
     }
-
 
     @Override
 
