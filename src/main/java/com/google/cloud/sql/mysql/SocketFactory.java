@@ -64,4 +64,5 @@ public class SocketFactory implements com.mysql.cj.protocol.SocketFactory {
 
     @Override
     public void afterHandshake() {}
+
 }
