@@ -119,7 +119,7 @@
 
     <h1>Log in</h1>
     <p style="color:red;font-weight: 900;font-size: 30px">${msg}</p>
-    <form action="<c:url value='/LoginServlet'/> " method="post">
+    <form action="<c:url value='../java/com/recipe/servlet/LoginServlet'/> " method="post">
         <h4>User name</h4><input type="text" name="username" style="font-size: 20px" value="${user.username}"/>${errors.username}<br/>
         <h4>Password:</h4><input type="password" name="password" style="font-size: 20px" value="${user.password}"/>${errors.password}<br/>
 
