@@ -134,7 +134,7 @@
 
         <!-- reCAPTCHA -->
         <div class="g-recaptcha"
-             data-sitekey="6Lc8Gq4UAAAAAMYlbbox_XnddjC5-DWdOSq2yeDR"></div>
+             data-sitekey="6LcpHK4UAAAAABPx9l_KaZVkSnkbqMEjzK3ivbJC"></div>
 
         <input type="submit" value="Submit"><br/>
     </form>
