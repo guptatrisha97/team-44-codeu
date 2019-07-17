@@ -52,6 +52,9 @@
 
     </style>
 
+    <!-- reCAPTCHA Libary -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
+
 </head>
 <body>
 <header>
@@ -123,6 +126,12 @@
         <h4>User name</h4><input type="text" name="username" style="font-size: 20px" value="${user.username}"/>${errors.username}<br/>
         <h4>Password:</h4><input type="password" name="password" style="font-size: 20px" value="${user.password}"/>${errors.password}<br/>
 
+        <p>&nbsp;</p>
+
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha"
+             data-sitekey="6LcpHK4UAAAAABPx9l_KaZVkSnkbqMEjzK3ivbJC"></div>
+        <p>&nbsp;</p>
         <input type="submit" value="Submit" style="font-size: 18px"><br/>
     </form>
 
