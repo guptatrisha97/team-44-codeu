@@ -46,6 +46,10 @@
             ele.src = "<c:url value='/VerifyCedeServlet'/>?xxx=" + new Date().getTime();
         }
     </script>
+
+    <!-- reCAPTCHA Libary -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
+
     <style>
         .pos {
             padding-top: 350px;
@@ -53,7 +57,7 @@
             width: 50%;
         }
 
-        footer{
+        footer {
             padding-top: 250px;
         }
 
@@ -123,13 +127,15 @@
 <div class="pos">
     <h1>Register</h1>
     <p style="color:red;font-weight: 900">${msg}</p>
-    <form action="<c:url value='/RegistServlet'/> " method="post">
+    <form action="<c:url value='../java/com/recipe/servlet/RegistServlet'/> " method="post">
         <h4>User name</h4><input type="text" name="username" value="${user.username}"/>${errors.username}<br/>
         <h4>Password</h4><input type="password" name="password" value="${user.password}"/>${errors.password}<br/>
-        <h4>Verification Code</h4><input type="text" name="verifyCode" value="${user.verifyCode}"
-                                 size="10"/>${errors.verifyCode}
-        <img id="vCode" src="<c:url value='/VerifyCedeServlet'/> ">
-        <a href="javascript:_change()"> Click to change </a><br/>
+
+
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha"
+             data-sitekey="6LcpHK4UAAAAABPx9l_KaZVkSnkbqMEjzK3ivbJC"></div>
+
         <input type="submit" value="Submit"><br/>
     </form>
 </div>
