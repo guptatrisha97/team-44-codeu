@@ -130,12 +130,11 @@
     <form action="<c:url value='../java/com/recipe/servlet/RegistServlet'/> " method="post">
         <h4>User name</h4><input type="text" name="username" value="${user.username}"/>${errors.username}<br/>
         <h4>Password</h4><input type="password" name="password" value="${user.password}"/>${errors.password}<br/>
-
-
+        <p>&nbsp;</p>
         <!-- reCAPTCHA -->
         <div class="g-recaptcha"
              data-sitekey="6LcpHK4UAAAAABPx9l_KaZVkSnkbqMEjzK3ivbJC"></div>
-
+        <p>&nbsp;</p>
         <input type="submit" value="Submit"><br/>
     </form>
 </div>
