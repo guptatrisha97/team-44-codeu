@@ -52,13 +52,17 @@
 
     <style>
         .pos {
-            padding-top: 350px;
+            padding-top: 250px;
             margin: auto;
             width: 50%;
         }
 
         footer {
             padding-top: 250px;
+        }
+
+        body{
+          background-image: url(https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300280/54088843-healthy-food-background-studio-photo-of-different-fruits-on-white-wooden-table-high-resolution-produ.jpg);
         }
 
     </style>
