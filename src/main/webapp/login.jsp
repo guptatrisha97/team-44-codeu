@@ -89,7 +89,7 @@
                         <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
                              id="navbar-example">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="active">
+                                <li>
                                     <a class="page-scroll" href="/index.html">Home</a>
                                 </li>
                                 <li>
@@ -102,11 +102,17 @@
                                         <li><a href="/register.jsp">Register</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                <!-- <li>
                                      <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="page-scroll" href="/aboutus.html">About Us</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/translation.html">Translation</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/index.jsp">Image Analysis</a>
                                 </li>
                             </ul>
                         </div>

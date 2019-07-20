@@ -31,9 +31,20 @@
 
     <!-- Responsive Stylesheet File -->
     <link href="css/responsive.css" rel="stylesheet">
+
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
+
+    <script>
+    function openSearch() {
+      document.getElementById("myOverlay").style.display = "block";
+     }
+
+    function closeSearch() {
+        document.getElementById("myOverlay").style.display = "none";
+    }
+    </script>
 
 <div id="preloader"></div>
 
@@ -79,11 +90,17 @@
                                         <li><a href="/register.jsp">Register</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                               <!-- <li>
                                      <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="page-scroll" href="/aboutus.html">About Us</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/translation.html">Translation</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/index.jsp">Image Analysis</a>
                                 </li>
                             </ul>
                         </div>
