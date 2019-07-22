@@ -109,7 +109,8 @@ limitations under the License.
                     <nav class="navbar navbar-default">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -123,21 +124,26 @@ limitations under the License.
                             </a>
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
+                        <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+                             id="navbar-example">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="active">
+                                <li>
                                     <a class="page-scroll" href="/index.html">Home</a>
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="/recipes.html">Recipes</a>
                                 </li>
-                                <li>
-                                    <a class="page-scroll" href="/login">Log in</a>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                                        data-toggle="dropdown">User<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="/login.jsp">Log in</a></li>
+                                        <li><a href="/register.jsp">Register</a></li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a class="page-scroll" href="#blog">Food Blog</a>
+                                    <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a class="page-scroll" href="/aboutus.html">About Us</a>
                                 </li>
                             </ul>
@@ -151,7 +157,6 @@ limitations under the License.
     </div>
     <!-- header-area end -->
 </header>
-<!-- header end -->
 <!-- Start Service area -->
 <div></div>
 <div></div>
