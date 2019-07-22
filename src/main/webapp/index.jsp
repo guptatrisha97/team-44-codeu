@@ -78,6 +78,8 @@
       <a class="nav-item nav-link" href="/recipe.html">Recipe</a>
       <a class="nav-item nav-link" href="/aboutus.html">About us</a>
       <a class="nav-item nav-link" href="/maps.html">Maps</a>
+       <a class="nav-item nav-link" href="/translation.html">Translation</a>
+        <a class="nav-item nav-link" href="/index.jsp">Image Analysis</a>
     </div>
   </div>
 </nav>
