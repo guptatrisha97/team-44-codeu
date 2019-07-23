@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A New Chart</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart(){
+            fetch("/piechart").
+  then((response) => {
+    return response.json();
+  })
+  .then((cuisineJson) => {
+      var cuisineData = new google.visualization.DataTable();
+      cuisineData.addColumn('string', 'Membership by Organization Type');
+      cuisineData.addColumn('number', 'Attendance');
+      for (i = 0; i < cuisineJson.length; i++) {
+          cuisineRow = [];
+          var title = cuisineJson[i].title;
+          var cuisine = cuisineJson[i].cuisine;
+          cuisineRow.push(title, cuisine);
+          cuisineData.addRow(cuisineRow);
+      }
+      var chartOptions = {
+                       title: 'Membership by Type',
+                       width: 800,
+                       height: 400
+         };
+     var cuisineChart = new google.visualization.PieChart(document.getElementById('type_chart'));
+     cuisineChart.draw(cuisineData, chartOptions);
+     console.log(cuisineJson)
+  });
+}
+                         </script>
+                       </head>
+                       <body>
+                         <h1>Chart Project</h1><div id="recipe_chart"></div>
+                              <div id="type_chart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
