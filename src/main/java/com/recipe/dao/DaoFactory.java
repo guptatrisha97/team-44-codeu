@@ -5,25 +5,24 @@ import java.util.Properties;
 
 public class DaoFactory {
 
-    private static Properties properties=null;
+    private static Properties properties;
 
     static
     {
-        //家在配置文件到properties文件中
+        // add to properties
         try {
             InputStream in = DaoFactory.class.getClassLoader().getResourceAsStream("dao.properties");
             properties = new Properties();
             properties.load(in);
         }catch (Exception e)
         {
-            throw  new RuntimeException(e);
+            throw new RuntimeException("Error Here: " + e);
         }
     }
-    //返回一个具体实现UserDao的实现类
+    // return a UserDao class
     public static UserDao getUserDao() {
         /*
-         *给出一个配置文件，文件中给出UserDao接口的实现类名称
-         * 我们这个方法，获取实现类的类名，通过反射创建对象
+         * retrieve class name, create instance
          */
 
         try{
