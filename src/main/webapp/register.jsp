@@ -5,6 +5,7 @@
   Time: 9:53 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -137,7 +138,7 @@
 <div class="pos">
     <h1>Register</h1>
     <p style="color:red;font-weight: 900">${msg}</p>
-    <form action="<c:url value='../java/com/recipe/servlet/RegistServlet'/> " method="post">
+    <form action="<c:url value='/RegistServlet'/>" method="post">
         <h4>User name</h4><input type="text" name="username" value="${user.username}"/>${errors.username}<br/>
         <h4>Password</h4><input type="password" name="password" value="${user.password}"/>${errors.password}<br/>
         <p>&nbsp;</p>
