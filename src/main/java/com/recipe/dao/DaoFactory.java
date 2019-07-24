@@ -2,8 +2,10 @@ package com.recipe.dao;
 
 import org.apache.geronimo.mail.handlers.MessageHandler;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 public class DaoFactory {
@@ -32,20 +34,23 @@ public class DaoFactory {
             throw new RuntimeException("Error Here: " + e);
         }
     }
-    // return a UserDao class
+
     public static UserDao getUserDao() {
         /*
          * retrieve class name, create instance
          */
-
         try{
-            Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
+            URL path = DaoFactory.class.getResource("UserDao");
+            // File f = new File(path.getFile());
+            Class clazz = Class.forName(properties.getProperty(String.valueOf(path)));
             return (UserDao) clazz.newInstance();
+
+            // Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
+            // return (UserDao) clazz.newInstance();
         }catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Cannot get user dao" + e);
         }
 
     }
 
 }
-
