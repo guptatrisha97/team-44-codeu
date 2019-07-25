@@ -40,15 +40,11 @@ public class DaoFactory {
          * retrieve class name, create instance
          */
         try{
-            URL path = DaoFactory.class.getResource("UserDao");
-            // File f = new File(path.getFile());
-            Class clazz = Class.forName(properties.getProperty(String.valueOf(path)));
+            Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
             return (UserDao) clazz.newInstance();
 
-            // Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
-            // return (UserDao) clazz.newInstance();
         }catch (Exception e) {
-            throw new RuntimeException("Cannot get user dao" + e);
+            throw new RuntimeException("Cannot get user dao: " + e);
         }
 
     }
