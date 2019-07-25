@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao{
 
-    String file="/Users/codingBoy/JavaWeb-Regist-and-Login/LoginRegist2/web/user/dom4j.xml";
+    String file="/Login/LoginRegist2/web/user/dom4j.xml";
     public User findByUsername(String username)
     {
 

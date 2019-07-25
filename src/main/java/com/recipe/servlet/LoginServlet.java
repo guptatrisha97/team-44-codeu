@@ -18,6 +18,10 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
 
+        /**
+         * 1. success: check & return
+         * 2. failure: return username & error name
+         */
         User form = CommonUtils.toBean(request.getParameterMap(), User.class);
         UserService userService = new UserService();
         try {

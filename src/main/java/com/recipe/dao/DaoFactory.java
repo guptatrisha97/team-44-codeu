@@ -1,6 +1,11 @@
 package com.recipe.dao;
 
+import org.apache.geronimo.mail.handlers.MessageHandler;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 public class DaoFactory {
@@ -9,31 +14,43 @@ public class DaoFactory {
 
     static
     {
-        //家在配置文件到properties文件中
+        // try loading the properties
         try {
-            InputStream in = DaoFactory.class.getClassLoader().getResourceAsStream("dao.properties");
-            properties = new Properties();
-            properties.load(in);
+            Properties prop = new Properties();
+            String fileName = "dao.properties";
+            InputStream in = MessageHandler.class.getClassLoader().getResourceAsStream(fileName);
+
+            // error handeling
+            if (in != null) {
+                prop.load(in);
+            }else{
+                throw new FileNotFoundException("property file " + fileName + " not found");
+            }
+            // InputStream in = MessageHandler.class.getClassLoader().getResourceAsStream("dao.properties");
+            // properties prop = new Properties();
+            // properties.load(in);
         }catch (Exception e)
         {
-            throw  new RuntimeException(e);
+            throw new RuntimeException("Error Here: " + e);
         }
     }
-    //返回一个具体实现UserDao的实现类
+
     public static UserDao getUserDao() {
         /*
-         *给出一个配置文件，文件中给出UserDao接口的实现类名称
-         * 我们这个方法，获取实现类的类名，通过反射创建对象
+         * retrieve class name, create instance
          */
-
         try{
-            Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
+            URL path = DaoFactory.class.getResource("UserDao");
+            // File f = new File(path.getFile());
+            Class clazz = Class.forName(properties.getProperty(String.valueOf(path)));
             return (UserDao) clazz.newInstance();
+
+            // Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
+            // return (UserDao) clazz.newInstance();
         }catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Cannot get user dao" + e);
         }
 
     }
 
 }
-
