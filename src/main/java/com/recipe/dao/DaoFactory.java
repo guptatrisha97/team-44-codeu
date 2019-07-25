@@ -18,7 +18,7 @@ public class DaoFactory {
         try {
             Properties prop = new Properties();
             String fileName = "dao.properties";
-            InputStream in = MessageHandler.class.getClassLoader().getResourceAsStream(fileName);
+            InputStream in = DaoFactory.class.getClassLoader().getResourceAsStream(fileName);
 
             // error handeling
             if (in != null) {
@@ -37,12 +37,19 @@ public class DaoFactory {
 
     public static UserDao getUserDao() {
         /*
-         * retrieve class name, create instance
+         * create instance
          */
-        try{
-            Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
-            return (UserDao) clazz.newInstance();
 
+        try{
+            String fileName = "UserDao";
+            InputStream in2 = DaoFactory.class.getClassLoader().getResourceAsStream(fileName);
+
+            if (in2 != null) {
+                Class clazz = Class.forName(properties.getProperty("dao.UserDao"));
+                return (UserDao) clazz.newInstance();
+            }else{
+                throw new FileNotFoundException(fileName + " not found !!!");
+            }
         }catch (Exception e) {
             throw new RuntimeException("Cannot get user dao: " + e);
         }
