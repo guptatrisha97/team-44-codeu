@@ -1,24 +1,153 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>CodeU Team 44</title>
+  <meta charset="utf-8">
+  <title>Recipe Club</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+        rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Nivo Slider Theme -->
+  <link href="css/nivo-slider-theme.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
+  <link href="css/responsive.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial;
+      background-image: url(https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300280/54088843-healthy-food-background-studio-photo-of-different-fruits-on-white-wooden-table-high-resolution-produ.jpg);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .overlay {
+      height: 100%;
+      width: 100%;
+      display: none;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .overlay-content {
+      position: relative;
+      top: 46%;
+      width: 80%;
+      text-align: center;
+      margin-top: 30px;
+      margin: auto;
+    }
+
+    .overlay .closebtn {
+      position: absolute;
+      top: 30px;
+      right: 45px;
+      font-size: 60px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .overlay .closebtn:hover {
+      color: #ccc;
+    }
+
+    .overlay input[type=text] {
+      padding: 15px;
+      font-size: 17px;
+      border: none;
+      float: left;
+      width: 80%;
+      background: white;
+    }
+
+    .overlay input[type=text]:hover {
+      background: #f1f1f1;
+    }
+
+    .overlay button {
+      float: left;
+      width: 20%;
+      padding: 15px;
+      background: #ddd;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .overlay button:hover {
+      background: #bbb;
+    }
+
+    #map{
+      width: 700px;
+      height: 700px;
+      border: thin solid black;
+    }
+
+    .center {
+      margin: auto;
+      width: 60%;
+      border: 0px;
+      padding: 10px;
+      margin-top: 200px;
+    }
+  </style>
+
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKAbp1Fs8t3dY-XUJcdkB1J6PZqZGcBxo"></script>
   <script>
     /** Creates a map that shows landmarks around Google. */
     function createMap(){
       const map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 37.422403, lng: -122.088073},
-        zoom: 15
+        center: {lat: 37.420819, lng: -122.082619},
+        zoom: 0
       });
 
       addLandmark(map, 37.423829, -122.092154, 'Google West Campus',
-          'Google West Campus is home to YouTube and Maps.')
+              'Google West Campus is home to YouTube and Maps.')
       addLandmark(map, 37.421903, -122.084674, 'Stan the T-Rex',
-          'This is Stan, the T-Rex statue.')
-      addLandmark(map, 37.420919, -122.086619, 'Permanente Creek Trail',
-          'Permanente Creek Trail connects Google to a system of bike trails.');
+              'This is Stan, the T-Rex statue.')
+      addLandmark(map, 37.420919, -122.086619, 'Hong Kong',
+              '');
+      addLandmark(map, 37.420910, -122.082619, 'Hong Kong island',
+              '');
+      addLandmark(map, 37.420819, -122.086719, 'Hong Kong island',
+              '');
+      addLandmark(map, 37.420819, -122.086019, 'Hong Kong2',
+              '');
+      addLandmark(map, -20.44278,  -54.64639, 'Campo Grande',
+              ' ');
+      addLandmark(map, 52.52437, 13.41053, 'Berlin, Germany', ' ');
+      addLandmark(map, 23.13302, -82.38304, 'Havana', ' ');
+      addLandmark(map, 10.82302, 106.62965, 'Ho Chi Minh City, Vietnam', ' ');
     }
- 
+
     /** Adds a marker that shows an info window when clicked. */
     function addLandmark(map, lat, lng, title, description){
       const marker = new google.maps.Marker({
@@ -34,17 +163,220 @@
       });
     }
   </script>
-  <style>
-    #map{
-      width: 500px;
-      height: 500px;
-      border: thin solid black;
-    }
-  </style>
+
 </head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+<div id="preloader"></div>
+
+<div>
+  <div id="myOverlay" class="overlay">
+    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+    <div class="overlay-content">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search Recipe.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+  <!--On search script start-->
+  <script>
+    function openSearch() {
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function closeSearch() {
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+  <!--on search script end-->
+</div>
+
+<header>
+  <!-- header-area start -->
+  <div id="sticker" class="header-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+
+          <!-- Navigation -->
+          <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                      data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Brand -->
+              <a class="navbar-brand page-scroll sticky-logo" href="index.html">
+                <h1><span>Recipe</span>club</h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <img src="img/logo.png" alt="" title=""> -->
+              </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+                 id="navbar-example">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active">
+                  <a class="page-scroll" href="/index.html">Home</a>
+                </li>
+                <li>
+                  <a class="page-scroll" href="/recipes.html">Recipes</a>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                        data-toggle="dropdown">User<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/login.jsp">Log in</a></li>
+                    <li><a href="/register.jsp">Register</a></li>
+                    <li><a href="/map.html">Locations</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
+                </li>
+                <li>
+                  <a class="page-scroll" href="/aboutus.html">About Us</a>
+                </li>
+                <li class="active">
+                  <a class="page-scroll" href="/translation.html">Translation</a>
+                </li>
+                <li class="active">
+                  <a class="page-scroll" href="/index.jsp">Image Analysis</a>
+                </li>
+              </ul>
+            </div>
+            <!-- navbar-collapse -->
+          </nav>
+          <!-- END: Navigation -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- header-area end -->
+</header>
+<!-- header end -->
+
+
 <body onload="createMap();">
-  <h1>Code U Team 44</h1>
-  <p>Here are a few tagged places at Google!</p>
+<div class="center">
+  <h1>Where are our users: </h1>
+  <p>See major member distributions in our site:</p>
   <div id="map"></div>
+</div>
+
+
+<!-- Start Footer bottom Area -->
+<footer>
+  <div class="footer-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="footer-content">
+            <div class="footer-head">
+              <div class="footer-logo">
+                <h2><span>recipe</span>Club</h2>
+              </div>
+
+              <p>Best recipe platform.</p>
+              <div class="footer-icons">
+                <ul>
+                  <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-google"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end single footer -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="footer-content">
+            <div class="footer-head">
+              <h4>information</h4>
+              <p>
+                Best platform. User-collaborative.
+              </p>
+              <div class="footer-contacts">
+                <p><span>Tel:</span> +123 456 789</p>
+                <p><span>Email:</span> contact@recipeclub.com</p>
+                <p><span>Working Hours:</span> 9am-5pm</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end single footer -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="footer-content">
+            <div class="footer-head">
+              <h4>Instagram</h4>
+              <div class="flicker-img">
+                <a href="#"><img src="img/portfolio/1.jpg" alt=""></a>
+                <a href="#"><img src="img/portfolio/2.jpg" alt=""></a>
+                <a href="#"><img src="img/portfolio/3.jpg" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-area-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="copyright text-center">
+            <p>
+              &copy; Copyright <strong>recipe Club</strong>. All Rights Reserved
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
+            -->
+            Powered by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/venobox/venobox.min.js"></script>
+<script src="lib/knob/jquery.knob.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/parallax/parallax.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="lib/appear/jquery.appear.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+
+<!-- Contact Form JavaScript File -->
+<script src="contactform/contactform.js"></script>
+
+<script src="js/main.js"></script>
+
 </body>
+
 </html>
