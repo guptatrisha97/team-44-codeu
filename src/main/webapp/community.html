@@ -36,6 +36,19 @@
     <!-- Responsive Stylesheet File -->
     <link href="css/responsive.css" rel="stylesheet">
 
+    <style type="text/css">
+        body{
+            background-image: url(https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300280/54088843-healthy-food-background-studio-photo-of-different-fruits-on-white-wooden-table-high-resolution-produ.jpg);
+        }
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+            margin-top: 250px;
+        }
+    </style>
+
 
 <script>
 
@@ -134,37 +147,37 @@ function buildUI(){
                                     <!-- <img src="img/logo.png" alt="" title=""> -->
                                 </a>
                             </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
-                                 id="navbar-example">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a class="page-scroll" href="/index.html">Home</a>
-                                    </li>
-                                    <li>
-                                        <a class="page-scroll" href="/recipes.html">Recipes</a>
-                                    </li>
-                                    <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                                            data-toggle="dropdown">User<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="/login.jsp">Log in</a></li>
-                                            <li><a href="/register.jsp">Register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                         <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
-                                    </li>
-                                    <li>
-                                        <a class="page-scroll" href="/aboutus.html">About Us</a>
-                                    </li>
+                                                 <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+                             id="navbar-example">
+                            <ul class="nav navbar-nav navbar-right" id="navigation">
                                 <li class="active">
+                                    <a class="page-scroll" href="/index.html">Home</a>
+                                </li>
+<!--                                 <li>
+                                    <a class="page-scroll" href="/recipes.html">Recipes</a>
+                                </li> -->
+                                <li><a href="/map.html">Locations</a></li>
+<!--                                 <li>
+                                    <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
+                                </li> -->
+                                <li>
+                                    <a class="page-scroll" href="/aboutus.html">About Us</a>
+                                </li>
+                                <li>
                                     <a class="page-scroll" href="/translation.html">Translation</a>
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="/index.jsp">Image Analysis</a>
                                 </li>
-                                </ul>
-                            </div>
+                                <li>
+                                    <a class="page-scroll" href="/feed.html">All Recipes</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/community.html">Community</a>
+                                </li>
+                            </ul>
+                        </div>
                             <!-- navbar-collapse -->
                         </nav>
                         <!-- END: Navigation -->
@@ -175,16 +188,12 @@ function buildUI(){
         <!-- header-area end -->
     </header>
     <!-- header end -->
-    <br>
-    <br>
-    <br>
-    <br>
 
-<div id="content">
+<div id="content" class="center">
 
-<h1>Community Page</h1>
+<h1>All our Recipe Sharers</h1>
 
-<p>Here is a list of every user who has posted a message:</p>
+<p>Wanna know who told you the Recipe?</p>
 
 <hr/>
 
