@@ -1,9 +1,12 @@
 <!--
 Copyright 2019 Google Inc.
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
+
     http://www.apache.org/licenses/LICENSE-2.0
+
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,20 +16,18 @@ limitations under the License.
 
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>User Page</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/user-page.css">
     <script src="/js/user-page-loader.js"></script>
-
-    <!-- Favicons -->
+     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,13 +48,13 @@ limitations under the License.
 
     <!-- Responsive Stylesheet File -->
     <link href="css/responsive.css" rel="stylesheet">
-</head>
 
-<body onload="buildUI();" data-spy="scroll" data-target="#navbar-example">
-
-<div id="preloader"></div>
-
-<header>
+    <!-- Google Map API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKAbp1Fs8t3dY-XUJcdkB1J6PZqZGcBxo"></script>
+    <script src="/js/user-page-loader.js"></script>
+  </head>
+  <body onload="buildUI();">
+  	<header>
     <!-- header-area start -->
     <div id="sticker" class="header-area">
         <div class="container">
@@ -81,21 +82,25 @@ limitations under the License.
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
                              id="navbar-example">
-                            <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav navbar-nav navbar-right" id="navigation">
                                 <li class="active">
                                     <a class="page-scroll" href="/index.html">Home</a>
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="/recipes.html">Recipes</a>
                                 </li>
+                                <li><a href="/map.html">Locations</a></li>
                                 <li>
-                                    <a class="page-scroll" href="/login">Account</a>
-                                </li>
-                                <li>
-                                    <a class="page-scroll" href="#blog">Search</a>
+                                    <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="/aboutus.html">About Us</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/translation.html">Translation</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="/index.jsp">Image Analysis</a>
                                 </li>
                             </ul>
                         </div>
@@ -109,149 +114,23 @@ limitations under the License.
     <!-- header-area end -->
 </header>
 <!-- header end -->
-<!-- Start Account Area -->
-<div align="center">
-    <div id="team" class="our-team-area area-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-headline text-center">
-                        <h2>My Account</h2>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <!-- End Account Area -->
+<br>
+<br>
+<br>
+<br>
 
-    <div id="about-me-container">Loading...</div>
-    <div id="about-me-form" class="hidden">
-        <form action="/about" method="POST">
-            <textarea name="about-me" placeholder="about me" rows=4 required></textarea>
-            <br/>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+    <h1 id="page-title">User Page</h1>
 
     <form id="message-form" action="/messages" method="POST" class="hidden">
-        Enter a new message:
-        <br/>
-        <textarea name="text" id="message-input"></textarea>
-        <br/>
-        <input type="submit" value="Submit">
+      Enter a new message:
+      <br/>
+      <textarea name="text" id="message-input"></textarea>
+      <br/>
+      <input type="submit" value="Submit">
     </form>
     <hr/>
 
     <div id="message-container">Loading...</div>
 
-</div>
-
-<!-- Start Footer bottom Area -->
-<footer>
-    <div class="footer-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="footer-content">
-                        <div class="footer-head">
-                            <div class="footer-logo">
-                                <h2><span>recipe</span>Club</h2>
-                            </div>
-
-                            <p>Best recipe platform.</p>
-                            <div class="footer-icons">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-google"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single footer -->
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="footer-content">
-                        <div class="footer-head">
-                            <h4>information</h4>
-                            <p>
-                                Best platform. User-collaborative.
-                            </p>
-                            <div class="footer-contacts">
-                                <p><span>Tel:</span> +123 456 789</p>
-                                <p><span>Email:</span> contact@recipeclub.com</p>
-                                <p><span>Working Hours:</span> 9am-5pm</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single footer -->
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="footer-content">
-                        <div class="footer-head">
-                            <h4>Instagram</h4>
-                            <div class="flicker-img">
-                                <a href="#"><img src="img/portfolio/1.jpg" alt=""></a>
-                                <a href="#"><img src="img/portfolio/2.jpg" alt=""></a>
-                                <a href="#"><img src="img/portfolio/3.jpg" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-area-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="copyright text-center">
-                        <p>
-                            &copy; Copyright <strong>recipe Club</strong>. All Rights Reserved
-                        </p>
-                    </div>
-                    <div class="credits">
-                        <!--
-                          All the links in the footer should remain intact.
-                          You can delete the links only if you purchased the pro version.
-                          Licensing information: https://bootstrapmade.com/license/
-                          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
-                        -->
-                        Powered by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-<!-- JavaScript Libraries -->
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/venobox/venobox.min.js"></script>
-<script src="lib/knob/jquery.knob.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/parallax/parallax.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
-<script src="lib/appear/jquery.appear.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-
-<!-- Contact Form JavaScript File -->
-<script src="contactform/contactform.js"></script>
-
-<script src="js/main.js"></script>
-</body>
-
+  </body>
 </html>
