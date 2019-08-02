@@ -39,7 +39,6 @@ public class DaoFactory {
         /*
          * create instance
          */
-
         try{
             String fileName = "UserDao";
             InputStream in2 = DaoFactory.class.getClassLoader().getResourceAsStream(fileName);
