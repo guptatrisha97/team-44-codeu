@@ -103,9 +103,10 @@
             background: #bbb;
         }
     </style>
+    <script src="/js/navigation-loader.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#navbar-example">
+<body data-spy="scroll" data-target="#navbar-example" onload="addLoginOrLogoutLinkToNavigation();">
 
 <div id="preloader"></div>
 
@@ -160,32 +161,24 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
                              id="navbar-example">
-                            <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav navbar-nav navbar-right" id="navigation">
                                 <li class="active">
                                     <a class="page-scroll" href="/index.html">Home</a>
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="/recipes.html">Recipes</a>
                                 </li>
-                                <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                                        data-toggle="dropdown">User<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="/login.jsp">Log in</a></li>
-                                        <li><a href="/register.jsp">Register</a></li>
-                                        <li><a href="/map.html">Locations</a></li>
-                                    </ul>
-                                </li>
-
+                                <li><a href="/map.html">Locations</a></li>
                                 <li>
                                     <a class="page-scroll" href="#services" onclick="openSearch()">Search</a>
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="/aboutus.html">About Us</a>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a class="page-scroll" href="/translation.html">Translation</a>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a class="page-scroll" href="/index.jsp">Image Analysis</a>
                                 </li>
                             </ul>
@@ -625,13 +618,7 @@
                             <div class="event-content head-team">
                                 <h4>Sign up</h4>
                                 <p>
-                                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi
-                                    magnam ducimus adipisci voluptas, praesentium maxime necessitatibus in dolor dolores
-                                    unde ab, libero quo. Aut, laborum sequi.
-                                </p>
-                                <p>
-                                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas,
-                                    praesentium architecto ducimus, doloribus fuga itaque omnis placeat.
+                                    Login with your google account to access our features :) 
                                 </p>
                             </div>
                         </div>
@@ -639,14 +626,9 @@
                     <div class="tab-pane" id="p-view-3">
                         <div class="tab-inner">
                             <div class="event-content head-team">
-                                <h4>Customize your profile</h4>
+                                <h4>Have fun and share!</h4>
                                 <p>
-                                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas,
-                                    praesentium architecto ducimus, doloribus fuga itaque omnis placeat.
-                                </p>
-                                <p>
-                                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas,
-                                    praesentium architecto ducimus, doloribus fuga itaque omnis.
+                                    our aim is to share recipes! so make sure you have fun! :) 
                                 </p>
                             </div>
                         </div>
@@ -658,37 +640,6 @@
     </div>
 </div>
 <!-- End Faq Area -->
-
-<!-- Start Wellcome Area -->
-<div class="wellcome-area">
-    <div class="well-bg">
-        <div class="test-overly"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="wellcome-text">
-                        <div class="well-text text-center">
-                            <h2>Welcome To Recipe Club</h2>
-                            <p>
-                                Please enter your email below if you wish to subscribe and get daily updates on new
-                                features or famous recipes on Recipe Club!
-                            </p>
-                            <div class="subs-feilds">
-                                <div class="suscribe-input">
-                                    <input type="email" class="email form-control width-80" id="sus_email"
-                                           placeholder="Email">
-                                    <button type="submit" id="sus_submit" class="add-btn width-20">Subscribe</button>
-                                    <div id="msg_Submit" class="h3 text-center hidden"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Wellcome Area -->
 <!-- Start Testimonials -->
 <div class="testimonials-area">
     <div class="testi-inner area-padding">
