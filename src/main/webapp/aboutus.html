@@ -92,9 +92,10 @@ limitations under the License.
             border: thin solid black;
         }
     </style>
+    <script src="/js/navigation-loader.js"></script>
 </head>
 
-<body onload="createMap()" data-spy="scroll" data-target="#navbar-example">
+<body onload="addLoginOrLogoutLinkToNavigation();" data-spy="scroll" data-target="#navbar-example">
 
 <div id="preloader"></div>
 
@@ -123,7 +124,7 @@ limitations under the License.
                                 <!-- <img src="img/logo.png" alt="" title=""> -->
                             </a>
                         </div>
-   <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
                              id="navbar-example">
                             <ul class="nav navbar-nav navbar-right" id="navigation">
@@ -140,27 +141,19 @@ limitations under the License.
                                 <li>
                                     <a class="page-scroll" href="/aboutus.html">About Us</a>
                                 </li>
-                                <li>
-                                    <a class="page-scroll" href="/translation.html">Translation</a>
-                                </li>
-                                <li>
-                                    <a class="page-scroll" href="/index.jsp">Image Analysis</a>
-                                </li>
-                                <li>
-                                    <a class="page-scroll" href="/feed.html">All Recipes</a>
-                                </li>
-                                <li>
-                                    <a class="page-scroll" href="/community.html">Community</a>
-                                </li>
                             </ul>
                         </div>
                             <!-- navbar-collapse -->
+                    </nav>
+                    <!-- END: Navigation -->
                 </div>
             </div>
         </div>
     </div>
     <!-- header-area end -->
 </header>
+<!-- header end -->
+
 <!-- Start Service area -->
 <div></div>
 <div></div>
