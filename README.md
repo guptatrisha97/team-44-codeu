@@ -5,7 +5,7 @@ A platform for foodies to share & learn great food recipes.
 
 ### Link
 
-[https://su19-codeu-44-9143.appspot.com/](https://su19-codeu-44-9143.appspot.com/)
+[http://recipeclub.appspot.com/](http://recipeclub.appspot.com/)
 
 ### Functions
 
